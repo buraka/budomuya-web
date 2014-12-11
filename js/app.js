@@ -6,8 +6,6 @@ oxiNewsApp.controller('NewListController', function ($scope, $http) {
 
 });
 
-
-
 oxiNewsApp.controller("categoryController", function($scope, $http) {
   $http.get("http://localhost:8080/OXIWebService/getCategories")
   .success(function(response) {$scope.categories = response;});
