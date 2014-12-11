@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+    <script src="js/app.js"></script>
+</head>
+
+<body ng-app="oxiNewsApp">
+
+<div  ng-controller="NewListController"> 
+<ul >
+    <li ng-repeat="new in news" style="float:left">
+      <span>{{new.name}}</span>
+      <p>{{new.snippet}}</p>	  
+	  <a target="_blank" ng-href="{{new.imageUrl}}"><img ng-src="{{new.image}}"></a>
+    </li>
+  </ul>
+</div>
+
+
+<div ng-controller="categoryController"> 
+<ul>
+  <li ng-repeat="category in categories">
+    {{ category.key + ', ' + category.value }}
+  </li>
+</ul>
+</div>
+
+</body>
+</html>
