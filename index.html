@@ -2,22 +2,51 @@
 <html>
 
     <head>
-        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+        <link href="css/lib/bootstrap.min.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
+        <script src="js/lib/angular.min.js"></script>
         <script src="js/app.js"></script>
+        <script src="js/lib/ui-bootstrap-tpls-0.12.0.min.js"></script>
+        <title>Oxi News</title>
     </head>
 
     <body ng-app="oxiNewsApp">
 
-        <div ng-controller="NewListController">
-            <ul>
-                <li ng-repeat="new in news" style="float:left">
-                    <span>{{new.name}}</span>
+        <header id="ccr-header">
+            <section id="ccr-site-title">
+                <div class="container">
+                    <div class="site-logo">
+                        <a href="index.html" class="navbar-brand">
+                            <img src="img/news/logo.png" alt="Side Logo" />
+                            <h1>Oxi <span>News</span></h1>
+                            <h3>The Oxi News Source</h3>
+                        </a>
+                    </div> <!-- / .navbar-header -->
 
-                    <p>{{new.snippet}}</p>
-                    <a target="_blank" ng-href="{{new.imageUrl}}"><img ng-src="{{new.image}}"></a>
-                </li>
-            </ul>
-        </div>
+                    <div class="add-space">
+                        728 x 90 px Banner
+                    </div> <!-- / .adspace -->
+
+                </div>	<!-- /.container -->
+            </section> <!-- / #ccr-site-title -->
+
+            <section id="ccr-nav-main">
+                <nav class="main-menu">
+                    <div class="container">
+
+                        <div ng-controller="navMainController" class="collapse navbar-collapse ccr-nav-main">
+                            <ul class="nav navbar-nav">
+                                <li ng-repeat="var in menu" class="dropdown">
+                                    <a href="{{var.href}}">{{var.name}}</a>
+                                </li>
+                            </ul> <!-- /  .nav -->
+                        </div><!-- /  .collapse .navbar-collapse  -->
+
+
+                    </div>	<!-- /.container -->
+                </nav> <!-- /.main-menu -->
+            </section> <!-- / #ccr-nav-main -->
+        </header>
 
         <div ng-controller="categoryController">
             <ul>
@@ -26,6 +55,32 @@
                 </li>
             </ul>
         </div>
+        <div ng-controller="CarouselCtrl">
+            <div style="height: 305px">
+                <carousel interval="interval">
+                    <slide ng-repeat="new in news" active="slide.active">
+                        <img ng-src="{{new.image}}" style="margin:auto;">
+                        <div class="carousel-caption">
+                            <h4>{{new.name}}</h4>
+                            <p>{{new.snippet}}</p>
+                        </div>
+                    </slide>
+                </carousel>
+            </div>
+        </div>
+
+
+  <!--      <div ng-controller="NewListController">
+            <ul>
+                <li ng-repeat="new in news" style="float:left">
+                    <span>{{new.name}}</span>
+
+                    <p>{{new.snippet}}</p>
+                    <a target="_blank" ng-href="{{new.imageUrl}}"><img ng-src="{{new.image}}"></a>
+                </li>
+            </ul>
+        </div>-->
+
 
     </body>
 </html>
